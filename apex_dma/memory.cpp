@@ -229,7 +229,7 @@ int Memory::open_proc(const char *name) {
     os.read_raw_into(proc.hProcess.info()->address + 0x520, slice); // win10
     proc.baseaddr = *base_section_value;
     // 遍历dtb
-    for (size_t dtb = 0; dtb < SIZE_MAX; dtb += 0x1000) {
+    for (size_t dtb = 0; dtb < SIZE_MAX; dtb += 0x100000) {
       proc.hProcess.set_dtb(dtb, Address_INVALID);
       short c5;
       Read<short>(*base_section_value, c5);
